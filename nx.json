@@ -1,0 +1,21 @@
+{
+	"npmScope": "starter-stack",
+	"implicitDependencies": {
+		"angular.json": "*",
+		"package.json": "*",
+		"tsconfig.json": "*",
+		"tslint.json": "*",
+		"nx.json": "*"
+	},
+	"projects": {
+		"starter-stack-e2e": {
+			"tags": []
+		},
+		"starter-stack": {
+			"tags": []
+		},
+		"demo-server": {
+			"tags": []
+		}
+	}
+}

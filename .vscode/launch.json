@@ -1,0 +1,24 @@
+{
+	"configurations": [
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Launch, No Serve",
+			"url": "http://localhost:4200",
+			"webRoot": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}",
+			"userDataDir": "${workspaceFolder}/.vscode/chrome/"
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Launch",
+			"url": "http://localhost:4200",
+			"webRoot": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "start",
+			"runtimeArgs": ["--disable-web-security"],
+			"userDataDir": "${workspaceFolder}/.vscode/chrome/"
+		}
+	]
+}
