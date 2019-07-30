@@ -22,7 +22,9 @@
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
-		"paths": {}
+		"paths": {
+			"@workspace/*": ["libs/*", "apps/*"]
+		}
 	},
 	"exclude": ["node_modules", "tmp"]
 }

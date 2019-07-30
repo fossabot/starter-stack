@@ -1,7 +1,18 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"types": ["node", "jest"]
+		"types": ["node", "jest"],
+		"paths": {
+			"@app": ["apps/demo-app/src/app"],
+			"@app/*": ["apps/demo-app/src/app/*"],
+			"@api": ["apps/demo-app/src/api"],
+			"@api/*": ["apps/demo-app/src/api/*"],
+			"@core": ["apps/demo-app/src/app/core"],
+			"@core/*": ["apps/demo-app/src/app/core/*"],
+			"@shared": ["apps/demo-app/src/app/shared"],
+			"@shared/*": ["apps/demo-app/src/app/shared/*"],
+			"@env": ["apps/demo-app/src/environments"]
+		}
 	},
 	"include": ["**/*.ts"]
 }
