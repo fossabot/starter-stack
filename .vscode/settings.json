@@ -23,6 +23,7 @@
 	"material-icon-theme.folders.associations": {
 		// This option doesn't work here, copy it and the next entry into your user settings if you wish to have folder icon associations
 		"module": "font",
+		"modules": "font",
 		"component": "components",
 		"doc": "markdown",
 		"animation": "delta",

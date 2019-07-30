@@ -63,7 +63,7 @@
 			},
 			"root": "apps/demo-app",
 			"sourceRoot": "apps/demo-app/src",
-			"prefix": "starter-stack",
+			"prefix": "app",
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
