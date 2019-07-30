@@ -2,6 +2,10 @@
 
 ## Plans
 
+- Currently it's an issue that extended tsconfigs are overwriting the parent "paths" attribute instead of extending it so all the used paths has to be defined on project level instead of workspace level.
+
+- Find out what the tags do in the nx.json
+
 Angular apps with NgRX and Apollo, using ngrx as a cache
 Nest backend, connecting the two with ng universal
 MySQL, TypeORM

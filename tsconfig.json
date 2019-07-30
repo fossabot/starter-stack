@@ -23,7 +23,9 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@workspace/*": ["libs/*", "apps/*"]
+			// This will be overwritten in the apps tsconfig
+			"@workspace/*": ["libs/*", "apps/*"],
+			"@starter-stack/model": ["libs/model/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

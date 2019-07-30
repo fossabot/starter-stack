@@ -9,13 +9,17 @@
 	},
 	"projects": {
 		"demo-server": {
-			"tags": []
+			"tags": ["type:server"]
 		},
 		"demo-app-e2e": {
 			"tags": []
 		},
 		"demo-app": {
-			"tags": []
+			"tags": ["type:app"],
+			"implicitDependencies": ["model"]
+		},
+		"model": {
+			"tags": ["type:model"]
 		}
 	}
 }

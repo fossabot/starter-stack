@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Hello } from '@workspace/model';
 import { AuthStoreFacade } from './store/facades/auth-store-facade.service';
-
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -11,7 +11,9 @@ export class AppComponent {
 
 	public constructor(private authStoreFacade: AuthStoreFacade) {}
 
-	public test($event: Event): void {
+	public test(_: Event): void {
+		const h: Hello = { world: '' };
+		console.log(h);
 		this.authStoreFacade.login();
 	}
 }
