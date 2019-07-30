@@ -5,6 +5,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
+		"start:all": "ng run demo-app:serve-with-server",
 		"build": "ng build",
 		"test": "ng test",
 		"lint": "nx lint && ng lint",
