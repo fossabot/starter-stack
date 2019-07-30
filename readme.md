@@ -1,5 +1,15 @@
 # StarterStack
 
+## Plans
+
+Angular apps with NgRX and Apollo, using ngrx as a cache
+Nest backend, connecting the two with ng universal
+MySQL, TypeORM
+
+Automatically generated swagger docs for the api
+
+common library for the model
+
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>

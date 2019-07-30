@@ -8,13 +8,13 @@
 		"nx.json": "*"
 	},
 	"projects": {
-		"starter-stack-e2e": {
-			"tags": []
-		},
-		"starter-stack": {
-			"tags": []
-		},
 		"demo-server": {
+			"tags": []
+		},
+		"demo-app-e2e": {
+			"tags": []
+		},
+		"demo-app": {
 			"tags": []
 		}
 	}
