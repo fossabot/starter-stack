@@ -5,8 +5,8 @@
 		"paths": {
 			"@app": ["apps/demo-app/src/app"],
 			"@app/*": ["apps/demo-app/src/app/*"],
-			"@api": ["apps/demo-app/src/api"],
-			"@api/*": ["apps/demo-app/src/api/*"],
+			"@api": ["apps/demo-app/src/app/core/api"],
+			"@api/*": ["apps/demo-app/src/app/core/api/*"],
 			"@core": ["apps/demo-app/src/app/core"],
 			"@core/*": ["apps/demo-app/src/app/core/*"],
 			"@shared": ["apps/demo-app/src/app/shared"],
