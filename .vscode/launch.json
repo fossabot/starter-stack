@@ -12,12 +12,29 @@
 		{
 			"type": "chrome",
 			"request": "launch",
-			"name": "Launch",
+			"name": "Launch All",
 			"url": "http://localhost:4200",
 			"webRoot": "${workspaceFolder}",
 			"cwd": "${workspaceFolder}",
 			"preLaunchTask": "start:all",
 			"userDataDir": "${workspaceFolder}/.vscode/chrome/"
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Launch App",
+			"url": "http://localhost:4200",
+			"webRoot": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "start:app",
+			"userDataDir": "${workspaceFolder}/.vscode/chrome/"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Api",
+			"cwd": "${workspaceFolder}",
+			"preLaunchTask": "start:api"
 		}
 	]
 }

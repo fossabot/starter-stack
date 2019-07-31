@@ -12,7 +12,8 @@
 			"@shared": ["apps/demo-app/src/app/shared"],
 			"@shared/*": ["apps/demo-app/src/app/shared/*"],
 			"@env": ["apps/demo-app/src/environments"],
-			"@workspace/model": ["libs/model/src/index.ts"]
+			"@workspace/model": ["libs/model/src"],
+			"@workspace/model/*": ["libs/model/src"]
 		}
 	},
 	"include": ["**/*.ts"]

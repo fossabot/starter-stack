@@ -3,6 +3,7 @@
  * This is only a minimal backend to get started.
  */
 import { NestFactory } from '@nestjs/core';
+import 'reflect-metadata';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {

@@ -1,3 +1,1 @@
-export interface Hello {
-	world: string;
-}
+export * from './user';

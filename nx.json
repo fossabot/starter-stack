@@ -9,7 +9,8 @@
 	},
 	"projects": {
 		"demo-server": {
-			"tags": ["type:server"]
+			"tags": ["type:server"],
+			"implicitDependencies": ["model"]
 		},
 		"demo-app-e2e": {
 			"tags": []
