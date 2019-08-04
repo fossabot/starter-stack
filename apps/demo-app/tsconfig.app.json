@@ -7,6 +7,6 @@
 	"include": ["**/*.ts"],
 	"exclude": ["src/test-setup.ts", "**/*.spec.ts"],
 	"angularCompilerOptions": {
-		"enableIvy":  // TODO: Reenable once the chalk problem is sorted
+		"enableIvy": false // TODO: Reenable once the chalk problem is sorted
 	}
 }
