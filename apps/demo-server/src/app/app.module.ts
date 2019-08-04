@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
+import { User } from '@workspace/model';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RepositoryModule } from './repository/repository.module';
@@ -14,8 +14,8 @@ import { RepositoryModule } from './repository/repository.module';
 			database: 'mysql',
 			username: 'root',
 			password: 'secret',
-			entities: [join(__dirname, '../../**/**.entity{.ts,.js}')],
-			synchronize: true,
+			entities: [User],
+			synchronize: false,
 			debug: false
 		}),
 		RepositoryModule
