@@ -67,6 +67,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
+			// "dependsOn": ["start:database"], // Depending on background tasks is not supported https://github.com/Microsoft/vscode/issues/70283
 			"type": "npm",
 			"script": "start:api",
 			"isBackground": true,
@@ -90,6 +91,23 @@
 					}
 				}
 			]
+		},
+		{
+			"label": "start:database",
+			"type": "process",
+			"isBackground": true,
+			"command": "docker-compose",
+			"args": ["-f", "./apps/demo-server/docker-compose.yml", "up"],
+			"problemMatcher": {
+				"pattern": {
+					"regexp": "^.*$"
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".*",
+					"endsPattern": ".*(ready for connections).*"
+				}
+			}
 		}
 	]
 }
