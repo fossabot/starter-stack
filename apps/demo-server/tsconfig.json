@@ -3,9 +3,9 @@
 	"compilerOptions": {
 		"types": ["node", "jest"],
 		"paths": {
-			"@app": ["apps/demo-app/src/app"],
-			"@app/*": ["apps/demo-app/src/app/*"],
-			"@env": ["apps/demo-app/src/environments"],
+			"@app": ["apps/demo-server/src/app"],
+			"@app/*": ["apps/demo-server/src/app/*"],
+			"@env": ["apps/demo-server/src/environments"],
 			"@workspace/model": ["libs/model/src/index.ts"]
 		}
 	},

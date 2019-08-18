@@ -1,5 +1,9 @@
 # StarterStack
 
+## Requirements
+
+- Latest **LTS** node. The bcrypt implentation relies on node-gyp. (which is only included in LTS releases) Check the `.nvmrc` for the recommended Node version.
+
 ## Plans
 
 - use: https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-persisted/README.md
