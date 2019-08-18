@@ -3,7 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { User } from '@workspace/model';
 
 @Injectable()
-export class MainDatabaseConfigService {
+export class DatabaseConfigService {
 	public constructor() {}
 
 	public get defaultConfig(): TypeOrmModuleOptions {

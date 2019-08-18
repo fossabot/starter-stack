@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { MainDatabaseConfigModule } from './config/main-database-config.module';
-import { MainDatabaseConfigService } from './config/services/config.service';
+import { DatabaseConfigModule } from './config/database-config.module';
+import { DatabaseConfigService } from './config/services/config.service';
 
 @Module({
 	imports: [
 		TypeOrmModule.forRootAsync({
-			imports: [MainDatabaseConfigModule],
-			useFactory: async (mysqlConfigService: MainDatabaseConfigService) =>
+			imports: [DatabaseConfigModule],
+			useFactory: async (mysqlConfigService: DatabaseConfigService) =>
 				({
 					...mysqlConfigService.defaultConfig
 				} as TypeOrmModuleOptions),
-			inject: [MainDatabaseConfigService]
+			inject: [DatabaseConfigService]
 		} as TypeOrmModuleAsyncOptions)
 	],
 	controllers: [],

@@ -6,7 +6,7 @@ import { NestFactory } from '@nestjs/core';
 import 'reflect-metadata';
 import { AppModule } from './app/app.module';
 
-async function bootstrap() {
+export async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
 	const globalPrefix = 'api';
 	app.enableCors({
@@ -14,9 +14,15 @@ async function bootstrap() {
 	});
 	app.setGlobalPrefix(globalPrefix);
 	const port = process.env.port || 3333;
+
 	await app.listen(port, () => {
 		console.log('Listening at http://localhost:' + port + '/' + globalPrefix);
 	});
 }
 
-bootstrap();
+/**
+ * Will only run when executed directly, not when imported as a module
+ */
+if (require.main === module) {
+	bootstrap();
+}
