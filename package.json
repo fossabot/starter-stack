@@ -43,6 +43,7 @@
 		"@angular/router": "^8.2.2",
 		"@nestjs/common": "^6.5.3",
 		"@nestjs/core": "^6.5.3",
+		"@nestjs/jwt": "^6.1.1",
 		"@nestjs/ng-universal": "^2.0.0",
 		"@nestjs/platform-express": "^6.5.3",
 		"@nestjs/typeorm": "^6.1.3",
