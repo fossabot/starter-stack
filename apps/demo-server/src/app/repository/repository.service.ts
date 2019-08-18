@@ -8,4 +8,8 @@ export class RepositoryService {
 	public constructor(@InjectRepository(User) public readonly userRepository: Repository<User>) {
 		console.log('Repo up');
 	}
+
+	public getUsers(): Promise<User[]> {
+		return this.userRepository.find();
+	}
 }
