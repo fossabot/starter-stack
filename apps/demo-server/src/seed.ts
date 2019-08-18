@@ -9,6 +9,7 @@ import { SeederModule } from './app/database/seeders/seeder.module';
 import { SeederService } from './app/database/seeders/seeder.service';
 
 export async function bootstrap() {
+	console.log('Start seeding');
 	const appContext = await NestFactory.createApplicationContext(SeederModule);
 
 	const logger = appContext.get(Logger);
@@ -20,9 +21,10 @@ export async function bootstrap() {
 	} catch (error) {
 		logger.error('Seeding failed!');
 		throw error;
+	} finally {
+		await appContext.close();
 	}
-
-	appContext.close();
+	return true;
 }
 
 /**

@@ -13,7 +13,7 @@ export class UserSeederService {
 
 	public create(): Array<Promise<User>> {
 		return users.map(async (user: User) => {
-			return (await this.userRepository.findOne({ name: user.name })) || this.userRepository.create(user);
+			return await this.userRepository.save(user);
 		});
 	}
 }

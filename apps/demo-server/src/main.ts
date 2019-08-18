@@ -5,8 +5,13 @@
 import { NestFactory } from '@nestjs/core';
 import 'reflect-metadata';
 import { AppModule } from './app/app.module';
+import * as seed from './seed';
 
 export async function bootstrap() {
+	// Autoseed
+	const res = await seed.bootstrap();
+	console.log('Seed successful:', res);
+
 	const app = await NestFactory.create(AppModule);
 	const globalPrefix = 'api';
 	app.enableCors({
@@ -20,9 +25,4 @@ export async function bootstrap() {
 	});
 }
 
-/**
- * Will only run when executed directly, not when imported as a module
- */
-if (require.main === module) {
-	bootstrap();
-}
+bootstrap();
