@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
+import { User } from '@workspace/model';
 import { AuthService } from '../services/auth.service';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
 	constructor(private readonly authService: AuthService) {}
 
-	@Get('auth')
-	getHello() {
-		return 'Hola';
+	@Post('login')
+	public login(user: User): Promise<User | undefined> {
+		return this.authService.login(user);
 	}
 }
