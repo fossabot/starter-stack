@@ -1,12 +1,10 @@
 import { Global, Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '@workspace/model';
-import { RepositoryService } from './repository.service';
+import { UserRepositoryModule } from './user/user-repository.module';
 
 @Global()
 @Module({
-	imports: [TypeOrmModule.forFeature([User])],
-	providers: [RepositoryService],
-	exports: [RepositoryService]
+	imports: [UserRepositoryModule],
+	providers: [],
+	exports: [UserRepositoryModule]
 })
 export class RepositoryModule {}

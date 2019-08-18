@@ -4,12 +4,16 @@ import { User } from '@workspace/model';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class RepositoryService {
+export class UserRepositoryService {
 	public constructor(@InjectRepository(User) public readonly userRepository: Repository<User>) {
 		console.log('Repo up');
 	}
 
 	public getUsers(): Promise<User[]> {
 		return this.userRepository.find();
+	}
+
+	public save(user: User): Promise<User> {
+		return this.userRepository.save(user);
 	}
 }
