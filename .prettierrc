@@ -4,6 +4,7 @@
 	"singleQuote": true,
 	"printWidth": 140,
 	"tslintIntegration": true,
+	"eslintIntegration": true,
 	"jsonEnable": true,
 	"overrides": [
 		{
