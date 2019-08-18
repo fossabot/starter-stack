@@ -10,12 +10,12 @@ import { RepositoryModule } from './repository/repository.module';
 		TypeOrmModule.forRoot({
 			type: 'mysql',
 			host: 'localhost',
-			port: 3306,
-			database: 'mysql',
-			username: 'root',
+			port: 33060,
+			database: 'demo',
+			username: 'demo',
 			password: 'secret',
 			entities: [User],
-			synchronize: false,
+			synchronize: true,
 			debug: false
 		}),
 		RepositoryModule
