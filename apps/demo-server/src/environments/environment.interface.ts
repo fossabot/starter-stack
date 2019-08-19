@@ -1,4 +1,7 @@
 import { SignOptions } from 'jsonwebtoken';
+import { Package } from './package';
+// tslint:disable-next-line: no-var-requires
+const pkg = require('package.json') as Package;
 
 /**
  * Environment shape
@@ -31,9 +34,9 @@ export interface Environment {
 export const initialEnvironment: Environment = {
 	production: false,
 	artifact: {
-		name: 'Demo Api',
-		version: '0.0.1',
-		description: 'Demo Description'
+		name: `${pkg.name} API`,
+		version: pkg.version,
+		description: `${pkg.description} - For the API`
 	},
 	api: {
 		globalPrefix: 'api'

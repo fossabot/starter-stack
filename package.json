@@ -2,6 +2,7 @@
 	"name": "starter-stack",
 	"version": "0.1.0",
 	"license": "MIT",
+	"description": "Demo app stack",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
