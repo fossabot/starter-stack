@@ -1,7 +1,7 @@
 import { SignOptions } from 'jsonwebtoken';
 import { Package } from './package';
 // tslint:disable-next-line: no-var-requires
-const pkg = require('package.json') as Package;
+const pkg = require('package.json') as Package; // Do not do this on client applications, instead query it from an api
 
 /**
  * Environment shape
