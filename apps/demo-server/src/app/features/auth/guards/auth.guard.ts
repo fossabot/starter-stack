@@ -1,12 +1,14 @@
+import { MetaService } from '@app/features/meta/services/meta.service';
 import { GenericRequest } from '@app/typings';
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+import { AuthenticationError } from '../errors';
 import { JwtAuthService } from '../features/jwt/services/jwt-auth.service';
 
+export const TOKEN_PREFIX = 'Bearer ';
 export const AUTH_META_KEY = 'auth';
 export const PUBLIC_ENDPOINT_DENOTATOR = 'public';
 // export const PrivateEndpoint = () => SetMetadata('auth', ['private']);
-export const PublicEndpoint = () => SetMetadata(AUTH_META_KEY, [PUBLIC_ENDPOINT_DENOTATOR]);
+export const PublicEndpoint = () => SetMetadata<string, string[]>(AUTH_META_KEY, [PUBLIC_ENDPOINT_DENOTATOR]);
 
 /**
  * This global guard ensures that every endpoint (that is not marked explicitly `public`
@@ -14,25 +16,18 @@ export const PublicEndpoint = () => SetMetadata(AUTH_META_KEY, [PUBLIC_ENDPOINT_
  */
 @Injectable()
 export class AuthGuard implements CanActivate {
-	public constructor(private readonly jwtAuthService: JwtAuthService, private readonly reflector: Reflector) {}
+	public constructor(private readonly jwtAuthService: JwtAuthService, private readonly metaService: MetaService) {}
 	public async canActivate(context: ExecutionContext): Promise<boolean> {
+		const allMetadata = this.metaService.retrieve(context, AUTH_META_KEY);
 		const request: GenericRequest = context.switchToHttp().getRequest();
-		const authMetadata = this.reflector.get<string[]>(AUTH_META_KEY, context.getHandler());
-		console.log('Auth Guard', authMetadata);
-		if (authMetadata && authMetadata.some(m => m === PUBLIC_ENDPOINT_DENOTATOR)) {
-			console.log('PUBLIC ENDPOINT!');
-		} else if (request.headers.authorization && request.headers.authorization.startsWith('Bearer ')) {
-			console.log(request.headers.authorization);
+		if (allMetadata.some(m => m === PUBLIC_ENDPOINT_DENOTATOR)) {
+			return true;
+		} else if (request.headers.authorization && request.headers.authorization.startsWith(TOKEN_PREFIX)) {
 			try {
-				const res = await this.jwtAuthService.validateToken(request.headers.authorization.replace('Bearer ', '')[1]);
-
-				console.log('res', res);
+				return !!(await this.jwtAuthService.validateToken(request.headers.authorization.replace(TOKEN_PREFIX, '')));
 			} catch (e) {
-				console.log('Token Error');
+				throw new AuthenticationError(e.message);
 			}
-		} else {
-			console.log('No token');
-		}
-		return true;
+		} else throw new AuthenticationError('Missing token');
 	}
 }

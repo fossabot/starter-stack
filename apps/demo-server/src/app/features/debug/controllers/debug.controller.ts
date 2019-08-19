@@ -1,4 +1,5 @@
 import { BCryptService } from '@app/features/auth/features/bcrypt/services/crypt.service';
+import { PublicEndpoint } from '@app/features/auth/guards';
 import { Controller, Get, Query } from '@nestjs/common';
 import { Dictionary } from '@workspace/model';
 
@@ -19,5 +20,16 @@ export class DebugController {
 			result[k] = await this.bCryptService.encrypt(v);
 		}
 		return result;
+	}
+
+	@Get('public')
+	@PublicEndpoint()
+	public public(): string {
+		return 'Success';
+	}
+
+	@Get('private')
+	public private(): string {
+		return 'Success';
 	}
 }
