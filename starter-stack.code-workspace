@@ -38,6 +38,7 @@
 		"material-icon-theme.files.associations": {
 			"*.animation.ts": "purescript"
 		},
-		"terminal.integrated.windowsEnableConpty": true
+		"terminal.integrated.windowsEnableConpty": true,
+		"jestrunner.jestPath": "../../node_modules/jest/bin/jest.js"
 	}
 }

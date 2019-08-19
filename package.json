@@ -93,6 +93,7 @@
 		"@types/graphql": "^14.2.3",
 		"@types/jest": "24.0.17",
 		"@types/node": "~12.7.2",
+		"@types/supertest": "^2.0.8",
 		"codelyzer": "~5.1.0",
 		"cypress": "~3.4.1",
 		"dotenv": "8.1.0",
@@ -100,8 +101,10 @@
 		"jest": "24.9.0",
 		"jest-preset-angular": "7.1.1",
 		"prettier": "1.18.2",
+		"supertest": "^4.0.2",
 		"ts-jest": "24.0.2",
 		"ts-node": "~8.3.0",
+		"tsconfig-paths": "^3.8.0",
 		"tslint": "~5.18.0",
 		"typescript": "~3.5.3"
 	}

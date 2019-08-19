@@ -1,12 +1,12 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { User } from '@workspace/model';
+import { BCryptService } from '../features/bcrypt/services/crypt.service';
 import { Role } from '../guards/role.guard';
 import { AuthService } from '../services/auth.service';
-import { CryptService } from '../services/crypt.service';
 
 @Controller('auth')
 export class AuthController {
-	constructor(private readonly authService: AuthService, private readonly crypt: CryptService) {}
+	public constructor(private readonly authService: AuthService, private readonly bCryptService: BCryptService) {}
 
 	@HttpCode(HttpStatus.ACCEPTED)
 	@Post('login')
@@ -17,13 +17,17 @@ export class AuthController {
 			accessToken: string;
 		};
 	}> {
-		const accessToken = await this.authService.login(user.name, user.password);
+		try {
+			const accessToken = await this.authService.login(user.username, user.password);
 
-		return {
-			tokens: {
-				accessToken
-			}
-		};
+			return {
+				tokens: {
+					accessToken
+				}
+			};
+		} catch (e) {
+			throw new HttpException({ reason: e.message }, HttpStatus.FORBIDDEN);
+		}
 	}
 
 	@Get('check-admin-role')

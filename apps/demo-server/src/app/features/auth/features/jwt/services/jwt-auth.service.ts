@@ -13,6 +13,6 @@ export class JwtAuthService {
 
 	public generateToken(user: User): string {
 		console.log(user);
-		return this.jwtService.sign({ user: { ...user.nonSensitive() }, asd: 'asssssss' }, this.options);
+		return this.jwtService.sign({ user }, this.options);
 	}
 }

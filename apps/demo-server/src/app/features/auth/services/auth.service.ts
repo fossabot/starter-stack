@@ -5,14 +5,19 @@ import { JwtAuthService } from '../features/jwt/services/jwt-auth.service';
 
 @Injectable()
 export class AuthService {
-	public constructor(private userRepositoryService: UserRepositoryService, private readonly au: JwtAuthService) {}
+	public constructor(private readonly userRepositoryService: UserRepositoryService, private readonly jwtAuthService: JwtAuthService) {}
 
 	public async login(username: string, password: string): Promise<string> {
-		const user = await this.userRepositoryService.findUser(username, password);
-		if (user) {
-			return this.au.generateToken(user);
-		} else {
-			throw new LoginFailedError(['Incorrect Password']);
+		try {
+			const user = await this.userRepositoryService.findUser(username, password);
+			if (user) {
+				return this.jwtAuthService.generateToken(user);
+			} else {
+				throw new LoginFailedError(['Incorrect Password']);
+			}
+		} catch (e) {
+			console.log('SHier', e); //
+			throw e;
 		}
 	}
 }

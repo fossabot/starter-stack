@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { compare, genSalt, hash } from 'bcrypt';
 
 @Injectable()
-export class CryptService {
+export class BCryptService {
 	public constructor() {}
 
 	public async encrypt(plain: string): Promise<string> {
@@ -11,6 +11,7 @@ export class CryptService {
 	}
 
 	public compare(hashed: string, plain: string): Promise<boolean> {
+		console.log('Compare', hashed, plain);
 		return compare(plain, hashed);
 	}
 }

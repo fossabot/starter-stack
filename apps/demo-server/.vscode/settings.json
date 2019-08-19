@@ -19,4 +19,5 @@
 	"editor.fontFamily": "'Fira Code Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 	"editor.fontLigatures": true,
 	"editor.mouseWheelZoom": true,
+	"jestrunner.runOptions": { "args": ["-r tsconfig-paths/register"] }
 }

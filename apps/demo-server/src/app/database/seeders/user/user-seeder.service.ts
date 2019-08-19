@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@workspace/model';
+import { IUser, User } from '@workspace/model';
 import { Repository } from 'typeorm';
 import { users } from './data';
 
@@ -12,7 +12,7 @@ export class UserSeederService {
 	) {}
 
 	public create(): Array<Promise<User>> {
-		return users.map(async (user: User) => {
+		return users.map(async (user: IUser) => {
 			return await this.userRepository.save(user);
 		});
 	}
