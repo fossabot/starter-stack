@@ -1,12 +1,9 @@
-import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { User } from '@workspace/model';
 import { BCryptService } from '../features/bcrypt/services/crypt.service';
 import { Role } from '../guards/role.guard';
 import { AuthService } from '../services/auth.service';
 
-export interface Dictionary<T = string> {
-	[key: string]: T;
-}
 @Controller('auth')
 export class AuthController {
 	public constructor(private readonly authService: AuthService, private readonly bCryptService: BCryptService) {}
@@ -37,15 +34,5 @@ export class AuthController {
 	@Role('admin')
 	public checkIfAdmin(): string {
 		return 'Success';
-	}
-
-	@Get('encrypt')
-	// @Role('admin')
-	public async encrypt(@Query() query: Dictionary): Promise<Dictionary> {
-		const result: Dictionary = {};
-		for (const [k, v] of Object.entries(query)) {
-			result[k] = await this.bCryptService.encrypt(v);
-		}
-		return result;
 	}
 }
