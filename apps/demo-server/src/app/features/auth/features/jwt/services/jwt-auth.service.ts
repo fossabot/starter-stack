@@ -15,4 +15,8 @@ export class JwtAuthService {
 		console.log(user);
 		return this.jwtService.sign({ user }, this.options);
 	}
+
+	public validateToken(token: string): Promise<object> {
+		return this.jwtService.verifyAsync(token, this.options);
+	}
 }

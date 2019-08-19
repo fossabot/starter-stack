@@ -1,10 +1,12 @@
 import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { User } from '@workspace/model';
 import { BCryptService } from '../features/bcrypt/services/crypt.service';
+import { PublicEndpoint } from '../guards';
 import { Role } from '../guards/role.guard';
 import { AuthService } from '../services/auth.service';
 
 @Controller('auth')
+@PublicEndpoint()
 export class AuthController {
 	public constructor(private readonly authService: AuthService, private readonly bCryptService: BCryptService) {}
 
