@@ -16,7 +16,6 @@ export class AuthService {
 				throw new LoginFailedError(['Incorrect Password']);
 			}
 		} catch (e) {
-			console.log('SHier', e); //
 			throw e;
 		}
 	}

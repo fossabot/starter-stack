@@ -46,7 +46,7 @@ describe('Auth', () => {
 			.post('/auth/login')
 			.send({ username: 'admin', password: 'wrongPassword' } as IUser)
 			.type('json')
-			.expect(202);
+			.expect(403);
 	});
 
 	it(`[Login] Non-Existent User`, () => {
@@ -54,7 +54,7 @@ describe('Auth', () => {
 			.post('/auth/login')
 			.send({ username: 'nonExistent', password: 'wrongPassword' } as IUser)
 			.type('json')
-			.expect(202);
+			.expect(403);
 	});
 
 	afterAll(async () => {

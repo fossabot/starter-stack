@@ -17,10 +17,8 @@ export class UserRepositoryService {
 		return this.userRepository.find();
 	}
 
-	public async findUser(username: string, password: string): Promise<User | undefined> {
+	public async findUser(username: string, password: string): Promise<User> {
 		const userByUsername = await this.userRepository.findOne({ username });
-		console.log('Shieeeet', username, password, userByUsername);
-
 		if (userByUsername) {
 			if (await this.bCryptService.compare(userByUsername.password, password)) {
 				return userByUsername;

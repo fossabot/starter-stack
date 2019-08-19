@@ -4,11 +4,11 @@ export const users: IUser[] = [
 	{
 		id: 1,
 		username: 'admin',
-		password: 'admin'
+		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti' // secret
 	},
 	{
 		id: 2,
 		username: 'test',
-		password: 'test'
+		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti' // secret
 	}
 ];
