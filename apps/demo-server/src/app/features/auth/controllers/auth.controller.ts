@@ -2,7 +2,6 @@ import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post } from
 import { User } from '@workspace/model';
 import { BCryptService } from '../features/bcrypt/services/crypt.service';
 import { PublicEndpoint } from '../guards';
-import { Role } from '../guards/role.guard';
 import { AuthService } from '../services/auth.service';
 
 @Controller('auth')
@@ -32,9 +31,17 @@ export class AuthController {
 		}
 	}
 
-	@Get('check-admin-role')
-	@Role('admin')
-	public checkIfAdmin(): string {
-		return 'Success';
+	@HttpCode(HttpStatus.ACCEPTED)
+	@Get('refresh')
+	public async refresh(): Promise<{
+		tokens: {
+			accessToken: string;
+		};
+	}> {
+		return {
+			tokens: {
+				accessToken: ''
+			}
+		};
 	}
 }

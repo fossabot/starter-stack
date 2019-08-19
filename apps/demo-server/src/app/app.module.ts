@@ -4,11 +4,12 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './features/auth/auth.module';
 import { DebugModule } from './features/debug/debug.module';
+import { HealthModule } from './features/health/health.module';
 import { MetaModule } from './features/meta/meta.module';
 import { RepositoryModule } from './repository/repository.module';
 
 @Module({
-	imports: [DatabaseModule, RepositoryModule, AuthModule, DebugModule, MetaModule],
+	imports: [DatabaseModule, RepositoryModule, AuthModule, DebugModule, MetaModule, HealthModule],
 	controllers: [AppController],
 	providers: [AppService]
 })

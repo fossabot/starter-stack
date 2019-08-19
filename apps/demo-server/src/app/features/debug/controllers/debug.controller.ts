@@ -1,6 +1,7 @@
 import { BCryptService } from '@app/features/auth/features/bcrypt/services/crypt.service';
-import { PublicEndpoint } from '@app/features/auth/guards';
+import { PublicEndpoint, Role } from '@app/features/auth/guards';
 import { Controller, Get, Query } from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { Dictionary } from '@workspace/model';
 
 @Controller('debug')
@@ -29,7 +30,15 @@ export class DebugController {
 	}
 
 	@Get('private')
+	@ApiBearerAuth()
 	public private(): string {
+		return 'Success';
+	}
+
+	@Get('check-admin-role')
+	@Role('admin')
+	@ApiBearerAuth()
+	public checkIfAdmin(): string {
 		return 'Success';
 	}
 }
