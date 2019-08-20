@@ -1,10 +1,12 @@
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
+import { IUser, User } from '../user';
 import { Authorization } from './authorization.entity';
 
 export interface IAuthorizationGroup extends IAbstractEntity {
 	name: string;
-	authorizations: Authorization[];
+	users?: User[];
+	authorizations?: Authorization[];
 }
 
 /**
@@ -19,6 +21,11 @@ export class AuthorizationGroup extends AbstractEntity<AuthorizationGroup> imple
 	@Column({ nullable: false })
 	public name!: string;
 
-	@OneToMany(() => Authorization, authorization => authorization.authorizationGroup, { cascade: true })
-	public authorizations!: Authorization[];
+	@ManyToMany(() => User, user => user.authorizationGroups)
+	@JoinTable()
+	public users?: IUser[];
+
+	@ManyToMany(() => Authorization, authorization => authorization.authorizationGroups, { cascade: true })
+	@JoinTable()
+	public authorizations?: Authorization[];
 }

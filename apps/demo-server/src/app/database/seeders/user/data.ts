@@ -4,7 +4,13 @@ export const data: IUser[] = [
 	{
 		id: 1,
 		username: 'admin',
-		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti' // secret
+		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti', // secret
+		authorizationGroups: [
+			{
+				id: 1,
+				name: 'admin'
+			}
+		]
 	},
 	{
 		id: 2,

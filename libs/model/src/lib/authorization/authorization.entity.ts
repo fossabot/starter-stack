@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
 import { AuthorizationGroup, IAuthorizationGroup } from './authorization-group.entity';
 export interface IAuthorization extends IAbstractEntity {
 	role: string;
-	authorizationGroup?: AuthorizationGroup;
+	authorizationGroups?: AuthorizationGroup[];
 }
 
 /**
@@ -18,6 +18,6 @@ export class Authorization extends AbstractEntity<Authorization> implements IAut
 	@Column()
 	public role!: string;
 
-	@ManyToOne(() => AuthorizationGroup, authorizationGroup => authorizationGroup.authorizations)
-	public authorizationGroup?: IAuthorizationGroup; // Has to be a different import because webpack does not support circular dependencies
+	@ManyToMany(() => AuthorizationGroup, authorizationGroup => authorizationGroup.authorizations)
+	public authorizationGroups?: IAuthorizationGroup[]; // Has to be a different import because webpack does not support circular dependencies
 }
