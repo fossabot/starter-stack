@@ -27,7 +27,7 @@
 			// This will be overwritten in the apps tsconfig
 			"@workspace/*": ["libs/*", "apps/*"],
 			"@workspace/model": ["libs/model/src/index.ts"],
-			"@starter-stack/model": ["libs/model/src/index.ts"]
+			"@workspace/misc": ["libs/miscellaneous/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

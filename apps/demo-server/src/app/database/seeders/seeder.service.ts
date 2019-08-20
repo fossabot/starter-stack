@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AuthorizationGroupSeederService } from './authorization-group';
 import { AuthorizationSeederService } from './authorization/authorization.seeder.service';
 import { UserSeederService } from './user/user-seeder.service';
 
@@ -6,12 +7,14 @@ import { UserSeederService } from './user/user-seeder.service';
 export class SeederService {
 	public constructor(
 		private readonly userSeederService: UserSeederService,
-		private readonly authorizationSeederService: AuthorizationSeederService
+		private readonly authorizationSeederService: AuthorizationSeederService,
+		private readonly authorizationGroupSeederService: AuthorizationGroupSeederService
 	) {}
 
 	async seed() {
 		try {
 			const completedUsers = await this.users();
+			const completedAuthorizationGroups = await this.authorizationGroups();
 			const completedAuthorizations = await this.authorizations();
 			console.log(`Successfuly completed seeding users... ${completedUsers}`);
 		} catch (err) {
@@ -21,6 +24,12 @@ export class SeederService {
 	async users(): Promise<boolean> {
 		const createdUsers = await Promise.all(this.userSeederService.create());
 		console.log(`No. of users created: ${createdUsers.filter(u => !!u).length}`);
+		return true;
+	}
+
+	async authorizationGroups(): Promise<boolean> {
+		const createdAuthorizationGroups = await Promise.all(this.authorizationGroupSeederService.create());
+		console.log(`No. of authorizations created: ${createdAuthorizationGroups.filter(u => !!u).length}`);
 		return true;
 	}
 

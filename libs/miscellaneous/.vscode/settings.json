@@ -1,0 +1,22 @@
+{
+	"editor.formatOnSave": true,
+	"editor.autoIndent": true,
+	"editor.tabCompletion": "off",
+	"editor.quickSuggestionsDelay": 0,
+	"editor.quickSuggestions": {
+		"other": true,
+		"comments": false,
+		"strings": false
+	},
+	"editor.wordBasedSuggestions": true,
+	"editor.suggest.localityBonus": true,
+	"editor.snippetSuggestions": "bottom",
+	"editor.tabSize": 4,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.organizeImports": true
+	},
+	"editor.fontFamily": "'Fira Code Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+	"editor.fontLigatures": true,
+	"editor.mouseWheelZoom": true,
+}

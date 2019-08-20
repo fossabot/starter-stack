@@ -1,9 +1,10 @@
-import { Entity /*, OneToMany */ } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
-// import { Authorization } from './authorization.entity';
+import { Authorization } from './authorization.entity';
 
 export interface IAuthorizationGroup extends IAbstractEntity {
-	// authorization: Authorization[];
+	name: string;
+	authorizations: Authorization[];
 }
 
 /**
@@ -15,6 +16,9 @@ export class AuthorizationGroup extends AbstractEntity<AuthorizationGroup> imple
 		super(args);
 	}
 
-	// @OneToMany(() => Authorization, authorization => authorization.authorizationGroup)
-	// public authorization!: Authorization[];
+	@Column({ nullable: false })
+	public name!: string;
+
+	@OneToMany(() => Authorization, authorization => authorization.authorizationGroup, { cascade: true })
+	public authorizations!: Authorization[];
 }

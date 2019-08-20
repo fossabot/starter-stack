@@ -1,11 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
 import { DatabaseModule } from '../database.module';
-import { AuthorizationSeederModule } from './authorization/authorization-seeder.module';
+import { AuthorizationSeederModule } from './authorization';
+import { AuthorizationGroupSeederModule } from './authorization-group';
 import { SeederService } from './seeder.service';
-import { UserSeederModule } from './user/user-seeder.module';
+import { UserSeederModule } from './user';
 
 @Module({
-	imports: [DatabaseModule, UserSeederModule, AuthorizationSeederModule, Logger],
+	imports: [DatabaseModule, UserSeederModule, AuthorizationGroupSeederModule, AuthorizationSeederModule, Logger],
 	providers: [SeederService],
 	exports: [SeederService]
 })

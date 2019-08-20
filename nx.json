@@ -10,17 +10,20 @@
 	"projects": {
 		"demo-server": {
 			"tags": ["type:server"],
-			"implicitDependencies": ["model"]
+			"implicitDependencies": ["model", "miscellaneous"]
 		},
 		"demo-app-e2e": {
 			"tags": []
 		},
 		"demo-app": {
 			"tags": ["type:app"],
-			"implicitDependencies": ["model"]
+			"implicitDependencies": ["model", "miscellaneous"]
 		},
 		"model": {
 			"tags": ["type:model"]
+		},
+		"miscellaneous": {
+			"tags": ["type:miscellaneous"]
 		}
 	}
 }
