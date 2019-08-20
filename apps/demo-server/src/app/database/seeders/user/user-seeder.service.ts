@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IUser, User } from '@workspace/model';
 import { Repository } from 'typeorm';
-import { users } from './data';
+import { data } from './data';
 
 @Injectable()
 export class UserSeederService {
@@ -12,7 +12,7 @@ export class UserSeederService {
 	) {}
 
 	public create(): Array<Promise<User>> {
-		return users.map(async (user: IUser) => {
+		return data.map(async (user: IUser) => {
 			return await this.userRepository.save(user);
 		});
 	}

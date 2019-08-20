@@ -39,7 +39,8 @@
 						"outputPath": "dist/apps/demo-server",
 						"main": "apps/demo-server/src/main.ts",
 						"tsConfig": "apps/demo-server/tsconfig.app.json",
-						"assets": ["apps/demo-server/src/assets"]
+						"assets": ["apps/demo-server/src/assets"],
+						"showCircularDependencies": false
 					},
 					"configurations": {
 						"production": {

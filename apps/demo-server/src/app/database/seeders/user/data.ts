@@ -1,6 +1,6 @@
 import { IUser } from '@workspace/model';
 
-export const users: IUser[] = [
+export const data: IUser[] = [
 	{
 		id: 1,
 		username: 'admin',

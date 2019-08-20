@@ -13,7 +13,7 @@ export class AppComponent {
 	public constructor(private authStoreFacade: AuthStoreFacade) {}
 
 	public test(_: Event): void {
-		const h: User = { id: 1, username: 'asd', password: 'asd' };
+		const h: Partial<User> = { id: 1, username: 'asd', password: 'asd' };
 		console.log(h);
 		this.authStoreFacade.login();
 	}

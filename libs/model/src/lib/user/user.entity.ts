@@ -1,7 +1,8 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
+import { AuthorizationGroup } from '../authorization';
 export interface IUser extends IAbstractEntity {
 	username: string;
 	password: string;
@@ -28,4 +29,7 @@ export class User extends AbstractEntity<User> implements IUser {
 		description: 'bCrypted password'
 	})
 	public password!: string;
+
+	@OneToMany(() => AuthorizationGroup, authorizationGroup => authorizationGroup.id)
+	public authorizationGroups!: AuthorizationGroup[];
 }
