@@ -2,12 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as model from '@workspace/model';
 
-export function importToArray<Key extends string, PropType>(importObject: Record<Key, PropType>): PropType[] {
-	const keys: Key[] = Object.getOwnPropertyNames(importObject) as Key[];
+export const importToArray = <Key extends string, PropType>(importObject: Record<Key, PropType>): PropType[] =>
+	(Object.getOwnPropertyNames(importObject) as Key[]).filter(key => key.indexOf('__') !== 0).map(key => importObject[key]);
 
-	// ES6 / TypeScript exports contain a __esModule property. Don't include that.
-	return keys.filter(key => key.indexOf('__') !== 0).map(key => importObject[key]);
-}
 @Injectable()
 export class DatabaseConfigService {
 	public constructor() {}
