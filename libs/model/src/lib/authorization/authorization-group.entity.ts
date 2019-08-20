@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
 import { IUser, User } from '../user';
 import { Authorization } from './authorization.entity';
@@ -28,4 +28,10 @@ export class AuthorizationGroup extends AbstractEntity<AuthorizationGroup> imple
 	@ManyToMany(() => Authorization, authorization => authorization.authorizationGroups, { cascade: true })
 	@JoinTable()
 	public authorizations?: Authorization[];
+
+	@OneToMany(() => AuthorizationGroup, authorization => authorization.parentGroup, { cascade: true })
+	public authorizationGroups?: AuthorizationGroup[];
+
+	@ManyToOne(() => AuthorizationGroup, authorization => authorization.authorizationGroups)
+	public parentGroup?: AuthorizationGroup;
 }
