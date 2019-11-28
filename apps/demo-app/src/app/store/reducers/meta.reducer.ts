@@ -18,8 +18,13 @@ export function logger(reducer: ActionReducer<AppState, AppActions>): ActionRedu
 
 const persistent = ['view', 'auth'];
 
-export function localStorageSyncReducer(reducer: ActionReducer<AppState, AppActions>): ActionReducer<AppState, AppActions> {
+export function localStorageSyncReducer(
+	reducer: ActionReducer<AppState, AppActions>
+): ActionReducer<AppState, AppActions> {
 	return localStorageSync({ keys: persistent, rehydrate: true })(reducer);
 }
 
-export const metaReducers: MetaReducer<AppState, AppActions>[] = [localStorageSyncReducer, ...(!environment.production ? [logger] : [])];
+export const metaReducers: MetaReducer<AppState, AppActions>[] = [
+	localStorageSyncReducer,
+	...(!environment.production ? [logger] : [])
+];
