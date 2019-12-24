@@ -78,7 +78,7 @@
 		"ngrx-store-localstorage": "^8.0.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "~6.5.3",
-		"type-graphql": "^0.17.5",
+		"type-graphql": "^0.17.6",
 		"typeorm": "^0.2.20",
 		"zone.js": "^0.10.2"
 	},
