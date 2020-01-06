@@ -13,9 +13,9 @@ export class SeederService {
 
 	async seed() {
 		try {
-			const completedUsers = await this.users();
-			const completedAuthorizationGroups = await this.authorizationGroups();
 			const completedAuthorizations = await this.authorizations();
+			const completedAuthorizationGroups = await this.authorizationGroups();
+			const completedUsers = await this.users();
 			console.log(`Successfuly completed seeding users... ${completedUsers}`);
 		} catch (err) {
 			console.error('Failed seeding users...', err);

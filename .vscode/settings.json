@@ -50,7 +50,9 @@
 		"node_modules": true,
 		"coverage": true
 	},
-	"search.usePCRE2": true,
+	"files.associations": {
+		"*.json": "jsonc"
+	},
 	"terminal.integrated.windowsEnableConpty": true,
-	"jestrunner.runOptions": { "args": ["-r ts-node/register", "-r tsconfig-paths/register"] }
+	"jestrunner.runOptions": ["-r ts-node/register", "-r tsconfig-paths/register"]
 }

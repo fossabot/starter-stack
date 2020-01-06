@@ -1,4 +1,3 @@
-import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
@@ -19,19 +18,16 @@ export class User extends AbstractEntity<User> implements IUser {
 	}
 
 	@Column()
-	@ApiModelProperty({
-		description: 'Can be used for login purposes'
-	})
 	public username!: string;
 
 	@Column()
 	@Exclude()
-	@ApiModelProperty({
-		description: 'bCrypted password'
-	})
 	public password!: string;
 
-	@ManyToMany(() => AuthorizationGroup, authorizationGroup => authorizationGroup.users)
+	@ManyToMany(
+		() => AuthorizationGroup,
+		authorizationGroup => authorizationGroup.users
+	)
 	@JoinTable()
 	public authorizationGroups?: AuthorizationGroup[];
 }

@@ -9,9 +9,9 @@ export class DatabaseConfigService {
 
 	public get defaultConfig(): TypeOrmModuleOptions {
 		return {
-			type: 'mysql',
+			type: 'postgres',
 			host: 'localhost',
-			port: 33060,
+			port: 5432,
 			database: 'demo',
 			username: 'demo',
 			password: 'secret',
@@ -22,7 +22,6 @@ export class DatabaseConfigService {
 				})
 			],
 			synchronize: true,
-			debug: false,
 			migrations: ['src/migration/**/**{.ts,.js}']
 		};
 	}

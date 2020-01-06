@@ -9,3 +9,19 @@ TypeORM inherently requires you to define circular dependencies when defining Ma
 ## Running unit tests
 
 Run `ng test model` to execute the unit tests via [Jest](https://jestjs.io).
+
+## Global requisites
+
+### [node-gyp](https://github.com/nodejs/node-gyp)
+
+Build tools on windows (Only if you don't have Python installed)
+
+> run from elevated shell
+
+```powershell
+npm install --global --production windows-build-tools
+```
+
+```powershell
+npm install -g node-gyp
+```

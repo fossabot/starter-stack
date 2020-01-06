@@ -10,6 +10,6 @@ export abstract class AbstractEntity<T> implements IAbstractEntity {
 		}
 	}
 
-	@PrimaryGeneratedColumn()
+	@PrimaryGeneratedColumn('rowid')
 	public id!: number;
 }

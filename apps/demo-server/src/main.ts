@@ -38,13 +38,11 @@ bootstrap();
 export const setupSwagger = (app: INestApplication) => {
 	const options = new DocumentBuilder()
 		.setTitle(environment.artifact.name)
-		.setBasePath(environment.api.globalPrefix)
 		.setDescription(environment.artifact.description)
 		.setVersion(environment.artifact.version)
-		.setSchemes('http')
 		.addTag('demo', 'Showcase demo')
 		.addTag('nestjs', 'framework')
-		.addBearerAuth('Authorization', 'header', 'apiKey')
+		.addBearerAuth({ type: 'apiKey', name: 'header' })
 		.addTag('api')
 
 		.build();
