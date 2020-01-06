@@ -1,7 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 import { AbstractEntity, IAbstractEntity } from '../abstract';
-import { AuthorizationGroup } from '../authorization';
+import { AuthorizationGroup } from '../authorization/authorization-group.entity';
 export interface IUser extends IAbstractEntity {
 	username: string;
 	password: string;
