@@ -18,6 +18,12 @@ export class Authorization extends AbstractEntity<Authorization> implements IAut
 	@Column()
 	public role!: string;
 
-	@ManyToMany(() => AuthorizationGroup, authorizationGroup => authorizationGroup.authorizations)
-	public authorizationGroups?: IAuthorizationGroup[]; // Has to be a different import because webpack does not support circular dependencies
+	/**
+	 * Has to be a different import because webpack does not support circular dependencies
+	 */
+	@ManyToMany(
+		() => AuthorizationGroup,
+		authorizationGroup => authorizationGroup.authorizations
+	)
+	public authorizationGroups?: IAuthorizationGroup[];
 }
