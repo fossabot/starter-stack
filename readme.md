@@ -4,13 +4,24 @@
 
 - Latest **LTS** node. The bcrypt implentation relies on node-gyp. (which is only included in LTS releases) Check the `.nvmrc` for the recommended Node version.
 
+## Stack ideas
+
+TimescaleDB(PostgresSQL)
+for the financial time series data
+
+PostgresSQL
+for the auth service
+
+MongoDB
+file/document storage (profile images)
+
 ## Plans
 
-- use: https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-persisted/README.md
+- use: <https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-persisted/README.md>
 
--check for auth: https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-headers/README.md
+-check for auth: <https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-headers/README.md>
 
-- check https://github.com/apollographql/apollo-link
+- check <https://github.com/apollographql/apollo-link>
 
 - Currently it's an issue that extended tsconfigs are overwriting the parent "paths" attribute instead of extending it so all the used paths has to be defined on project level instead of workspace level.
 
@@ -77,7 +88,7 @@ Libraries are sharable across libraries and applications. They can be imported f
 
 ## Development server
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4201/. The app will automatically reload if you change any of the source files.
+Run `ng serve my-app` for a dev server. Navigate to <http://localhost:4201/.> The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
