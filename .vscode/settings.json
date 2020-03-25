@@ -1,7 +1,7 @@
 {
 	"tslint.alwaysShowRuleFailuresAsWarnings": true,
 	"editor.formatOnSave": true,
-	"editor.autoIndent": true,
+	"editor.autoIndent": "full",
 	"editor.tabCompletion": "off",
 	"editor.quickSuggestionsDelay": 0,
 	"editor.quickSuggestions": {
@@ -53,9 +53,6 @@
 		"*.json": "jsonc"
 	},
 	"terminal.integrated.windowsEnableConpty": true,
-	"jestrunner.runOptions": [
-		"-r ts-node/register",
-		"-r tsconfig-paths/register"
-	],
+	"jestrunner.runOptions": ["-r ts-node/register", "-r tsconfig-paths/register"],
 	"liveServer.settings.multiRootWorkspaceName": "starter-stack"
 }
