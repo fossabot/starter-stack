@@ -1,7 +1,14 @@
+import { version } from 'package.json';
+
 /**
  * Environment shape
  */
 export interface Environment {
+	/**
+	 * Application version, straight from the package.json
+	 */
+	version: string;
+
 	/**
 	 * Whether the app is in production mode or not
 	 */
@@ -43,6 +50,7 @@ export interface Environment {
  * Default environmental values, these are meant to be overridden.
  */
 export const initialEnvironment: Environment = {
+	version,
 	production: false,
 	protocol: 'http://',
 	baseUrl: 'localhost',
@@ -50,5 +58,5 @@ export const initialEnvironment: Environment = {
 	apiPrefix: 'api',
 	get api(): string {
 		return `${this.protocol}${this.baseUrl}${this.port ? ':' + this.port : ''}/${this.apiPrefix}`;
-	}
+	},
 };
