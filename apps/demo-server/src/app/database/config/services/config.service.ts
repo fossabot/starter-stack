@@ -1,28 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { importToArray } from '@workspace/misc';
 import * as model from '@workspace/model';
+import { Options } from 'mikro-orm';
 
 @Injectable()
 export class DatabaseConfigService {
 	public constructor() {}
 
-	public get defaultConfig(): TypeOrmModuleOptions {
+	public get defaultConfig(): Options {
 		return {
-			type: 'postgres',
+			type: 'postgresql',
 			host: 'localhost',
 			port: 5432,
-			database: 'demo',
-			username: 'demo',
-			password: 'secret',
+			dbName: 'starterstackdb',
 			entities: [
-				...importToArray(model).map(m => {
-					console.log('Importin entity: ', m);
+				...importToArray(model).map((m) => {
+					console.log('Importing entity: ', m);
 					return m;
-				})
+				}),
 			],
-			synchronize: true,
-			migrations: ['src/migration/**/**{.ts,.js}']
+			entitiesDirsTs: ['src'],
+			debug: true,
 		};
 	}
 }

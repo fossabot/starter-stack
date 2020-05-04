@@ -1,13 +1,13 @@
 import { BCryptModule } from '@app/features/auth/features/bcrypt/bcrypt.module';
 import { Global, Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@workspace/model';
+import { MikroOrmModule } from 'nestjs-mikro-orm';
 import { UserRepositoryService } from './user-repository.service';
 
 @Global()
 @Module({
-	imports: [TypeOrmModule.forFeature([User]), BCryptModule],
+	imports: [MikroOrmModule.forFeature({ entities: [User] }), BCryptModule],
 	providers: [UserRepositoryService],
-	exports: [UserRepositoryService]
+	exports: [UserRepositoryService],
 })
 export class UserRepositoryModule {}

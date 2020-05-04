@@ -1,7 +1,0 @@
-// Solely for CLI usage, the
-{
-	"migrations": ["apps/demo-server/src/database/migrations/**/**.migration{.ts,.js}"],
-	"cli": {
-		"migrationsDir": "apps/demo-server/src/database/migrations"
-	}
-}

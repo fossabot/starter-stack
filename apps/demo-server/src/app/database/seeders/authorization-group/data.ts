@@ -1,22 +1,22 @@
-import { IAuthorizationGroup } from '@workspace/model';
+import { AuthorizationGroup } from '@workspace/model';
 
-export const data: IAuthorizationGroup[] = [
+export const data: AuthorizationGroup[] = [
 	{
 		id: 1,
 		name: 'admin',
 		authorizations: [
 			{
 				id: 1,
-				role: 'One'
+				role: 'One',
 			},
 			{
 				id: 2,
-				role: 'Two'
+				role: 'Two',
 			},
 			{
 				id: 3,
-				role: 'Three'
-			}
-		]
-	}
+				role: 'Three',
+			},
+		],
+	},
 ];

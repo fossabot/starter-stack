@@ -2,8 +2,8 @@ import { AppModule } from '@app/app.module';
 import { BCryptService } from '@app/features/auth/features/bcrypt/services/crypt.service';
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
 import { IUser, User } from '@workspace/model';
+import { getRepositoryToken } from 'nestjs-mikro-orm';
 import * as request from 'supertest';
 
 export type MockType<T> = {
@@ -17,15 +17,18 @@ describe('Auth', () => {
 	beforeAll(async () => {
 		bCryptService = new BCryptService();
 		const module = await Test.createTestingModule({
-			imports: [AppModule]
+			imports: [AppModule],
 		})
 			.overrideProvider(getRepositoryToken(User))
 			.useValue({
 				findOne: jest.fn(async (entity: User) => {
 					if (entity.username === 'admin') {
-						return { ...entity, password: await bCryptService.encrypt('correctPassword') };
+						return {
+							...entity,
+							password: await bCryptService.encrypt('correctPassword'),
+						};
 					} else return undefined;
-				})
+				}),
 			})
 			.compile();
 		console.log('Beforall login');

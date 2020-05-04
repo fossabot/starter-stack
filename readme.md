@@ -29,7 +29,7 @@ file/document storage (profile images)
 
 Angular apps with NgRX and Apollo, using ngrx as a cache
 Nest backend, connecting the two with ng universal
-MySQL, TypeORM
+PostgreSQL, MikroORM
 
 Automatically generated swagger docs for the api
 

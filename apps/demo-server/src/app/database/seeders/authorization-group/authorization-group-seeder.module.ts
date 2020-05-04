@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorizationGroup } from '@workspace/model';
+import { MikroOrmModule } from 'nestjs-mikro-orm';
 import { AuthorizationGroupSeederService } from './authorization-group.seeder.service';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([AuthorizationGroup])],
+	imports: [MikroOrmModule.forFeature({ entities: [AuthorizationGroup] })],
 	providers: [AuthorizationGroupSeederService],
-	exports: [AuthorizationGroupSeederService]
+	exports: [AuthorizationGroupSeederService],
 })
 export class AuthorizationGroupSeederModule {
 	public constructor() {}

@@ -1,29 +1,22 @@
-import { Column, Entity, ManyToMany } from 'typeorm';
-import { AbstractEntity, IAbstractEntity } from '../abstract';
-import { AuthorizationGroup, IAuthorizationGroup } from './authorization-group.entity';
-export interface IAuthorization extends IAbstractEntity {
-	role: string;
-	authorizationGroups?: AuthorizationGroup[];
-}
+import { Entity, ManyToMany, PrimaryKey, Property } from 'mikro-orm';
+import { AuthorizationGroup } from './authorization-group.entity';
 
 /**
  * Authorization entity
  */
 @Entity()
-export class Authorization extends AbstractEntity<Authorization> implements IAuthorization {
-	public constructor(args?: Partial<Authorization>) {
-		super(args);
-	}
+export class Authorization {
+	public constructor() {}
 
-	@Column()
+	@PrimaryKey()
+	id!: number;
+
+	@Property()
 	public role!: string;
 
 	/**
 	 * Has to be a different import because webpack does not support circular dependencies
 	 */
-	@ManyToMany(
-		() => AuthorizationGroup,
-		authorizationGroup => authorizationGroup.authorizations
-	)
-	public authorizationGroups?: IAuthorizationGroup[];
+	@ManyToMany(() => AuthorizationGroup, (authorizationGroup) => authorizationGroup.authorizations)
+	public authorizationGroups?: AuthorizationGroup[];
 }

@@ -1,19 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Authorization, IAuthorization } from '@workspace/model';
-import { Repository } from 'typeorm';
+import { Authorization } from '@workspace/model';
+import { EntityRepository } from 'mikro-orm';
+import { InjectRepository } from 'nestjs-mikro-orm';
 import { data } from './data';
 
 @Injectable()
 export class AuthorizationSeederService {
 	public constructor(
 		@InjectRepository(Authorization)
-		private readonly authorizationRepository: Repository<Authorization>
+		private readonly authorizationRepository: EntityRepository<Authorization>
 	) {}
 
 	public create(): Array<Promise<Authorization>> {
-		return data.map(async (authorization: IAuthorization) => {
-			return await this.authorizationRepository.save(authorization);
+		return data.map(async (authorization: Authorization) => {
+			await this.authorizationRepository.persistAndFlush(authorization);
+			return authorization;
 		});
 	}
 }

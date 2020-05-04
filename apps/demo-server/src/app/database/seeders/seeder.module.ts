@@ -6,9 +6,15 @@ import { SeederService } from './seeder.service';
 import { UserSeederModule } from './user';
 
 @Module({
-	imports: [DatabaseModule, UserSeederModule, AuthorizationGroupSeederModule, AuthorizationSeederModule, Logger],
+	imports: [
+		DatabaseModule,
+		UserSeederModule,
+		AuthorizationGroupSeederModule,
+		AuthorizationSeederModule,
+		Logger,
+	],
 	providers: [SeederService],
-	exports: [SeederService]
+	exports: [SeederService],
 })
 export class SeederModule {
 	public constructor() {}

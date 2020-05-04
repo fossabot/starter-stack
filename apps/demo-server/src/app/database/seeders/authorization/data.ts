@@ -1,3 +1,3 @@
-import { IAuthorization } from '@workspace/model';
+import { Authorization } from '@workspace/model';
 
-export const data: IAuthorization[] = [];
+export const data: Authorization[] = [];

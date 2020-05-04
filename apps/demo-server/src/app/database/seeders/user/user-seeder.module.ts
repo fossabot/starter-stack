@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@workspace/model';
+import { MikroOrmModule } from 'nestjs-mikro-orm';
 import { UserSeederService } from './user-seeder.service';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([User])],
+	imports: [MikroOrmModule.forFeature({ entities: [User] })],
 	providers: [UserSeederService],
-	exports: [UserSeederService]
+	exports: [UserSeederService],
 })
 export class UserSeederModule {
 	public constructor() {}

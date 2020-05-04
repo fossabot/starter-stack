@@ -1,20 +1,20 @@
 import { BCryptService } from '@app/features/auth/features/bcrypt/services/crypt.service';
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@workspace/model';
-import { Repository } from 'typeorm';
+import { EntityRepository } from 'mikro-orm';
+import { InjectRepository } from 'nestjs-mikro-orm';
 
 @Injectable()
 export class UserRepositoryService {
 	public constructor(
-		@InjectRepository(User) private readonly userRepository: Repository<User>,
+		@InjectRepository(User) private readonly userRepository: EntityRepository<User>,
 		private readonly bCryptService: BCryptService
 	) {
 		console.log('Repo up');
 	}
 
 	public getUsers(): Promise<User[]> {
-		return this.userRepository.find();
+		return this.userRepository.findAll();
 	}
 
 	public async findUser(username: string, password: string): Promise<User> {
@@ -31,6 +31,10 @@ export class UserRepositoryService {
 	 * @param user will be saved into the database, and it's password will be encrypted
 	 */
 	public async save(user: User): Promise<User> {
-		return this.userRepository.save({ ...user, password: await this.bCryptService.encrypt(user.password) });
+		this.userRepository.persistAndFlush({
+			...user,
+			password: await this.bCryptService.encrypt(user.password),
+		});
+		return user;
 	}
 }

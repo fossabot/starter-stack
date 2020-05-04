@@ -1,20 +1,18 @@
 import { DatabaseModule } from '@app/database/database.module';
 import { Module } from '@nestjs/common';
-import { DiskHealthIndicator, TerminusModule, TerminusModuleOptions, TypeOrmHealthIndicator } from '@nestjs/terminus';
+import { DiskHealthIndicator, TerminusModule, TerminusModuleOptions } from '@nestjs/terminus';
 
-const getTerminusOptions = (db: TypeOrmHealthIndicator, disk: DiskHealthIndicator): TerminusModuleOptions => ({
+const getTerminusOptions = (disk: DiskHealthIndicator): TerminusModuleOptions => ({
 	endpoints: [
 		{
 			// The health check will be available with /health
 			url: '/health',
 			// All the indicator which will be checked when requesting /health
 			healthIndicators: [
-				// Set the timeout for a response to 300ms
-				async () => db.pingCheck('database', { timeout: 300 }),
-				async () => disk.checkStorage('disk', { path: __dirname, thresholdPercent: 0.9 })
-			]
-		}
-	]
+				async () => disk.checkStorage('disk', { path: __dirname, thresholdPercent: 0.9 }),
+			],
+		},
+	],
 });
 
 /**
@@ -25,10 +23,9 @@ const getTerminusOptions = (db: TypeOrmHealthIndicator, disk: DiskHealthIndicato
 	imports: [
 		DatabaseModule,
 		TerminusModule.forRootAsync({
-			// Inject the TypeOrmHealthIndicator provided by nestjs/terminus
-			inject: [TypeOrmHealthIndicator, DiskHealthIndicator],
-			useFactory: (db, disk) => getTerminusOptions(db, disk)
-		})
-	]
+			inject: [DiskHealthIndicator],
+			useFactory: (disk) => getTerminusOptions(disk),
+		}),
+	],
 })
 export class HealthModule {}

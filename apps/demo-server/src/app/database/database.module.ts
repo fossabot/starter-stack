@@ -1,21 +1,18 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule, TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { MikroOrmModule } from 'nestjs-mikro-orm';
 import { DatabaseConfigModule } from './config/database-config.module';
 import { DatabaseConfigService } from './config/services/config.service';
 
 @Module({
 	imports: [
-		TypeOrmModule.forRootAsync({
+		MikroOrmModule.forRootAsync({
 			imports: [DatabaseConfigModule],
-			useFactory: async (mysqlConfigService: DatabaseConfigService) =>
-				({
-					...mysqlConfigService.defaultConfig
-				} as TypeOrmModuleOptions),
-			inject: [DatabaseConfigService]
-		} as TypeOrmModuleAsyncOptions)
+			inject: [DatabaseConfigService],
+			useFactory: async (configService: DatabaseConfigService) => configService.defaultConfig,
+		}),
 	],
 	controllers: [],
-	providers: []
+	providers: [],
 })
 export class DatabaseModule {
 	public constructor() {}

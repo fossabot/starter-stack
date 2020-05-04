@@ -23,19 +23,25 @@ export class SeederService {
 	}
 	async users(): Promise<boolean> {
 		const createdUsers = await Promise.all(this.userSeederService.create());
-		console.log(`No. of users created: ${createdUsers.filter(u => !!u).length}`);
+		console.log(`No. of users created: ${createdUsers.filter((u) => !!u).length}`);
 		return true;
 	}
 
 	async authorizationGroups(): Promise<boolean> {
-		const createdAuthorizationGroups = await Promise.all(this.authorizationGroupSeederService.create());
-		console.log(`No. of authorizations created: ${createdAuthorizationGroups.filter(u => !!u).length}`);
+		const createdAuthorizationGroups = await Promise.all(
+			this.authorizationGroupSeederService.create()
+		);
+		console.log(
+			`No. of authorizations created: ${createdAuthorizationGroups.filter((u) => !!u).length}`
+		);
 		return true;
 	}
 
 	async authorizations(): Promise<boolean> {
 		const createdAuthorizations = await Promise.all(this.authorizationSeederService.create());
-		console.log(`No. of authorizations created: ${createdAuthorizations.filter(u => !!u).length}`);
+		console.log(
+			`No. of authorizations created: ${createdAuthorizations.filter((u) => !!u).length}`
+		);
 		return true;
 	}
 }
