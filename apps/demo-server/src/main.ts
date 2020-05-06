@@ -9,22 +9,21 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import 'reflect-metadata';
 import { AppModule } from './app/app.module';
-import * as seed from './seed';
 export async function bootstrap() {
 	// Autoseed
-	const res = await seed.bootstrap();
-	console.log('Seed successful:', res);
+	// const res = await seed.bootstrap();
+	// console.log('Seed successful:', res);
 
 	// Using the Fastify Platform
 	const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
 	app.enableCors({
-		origin: /https?:\/\/localhost.*/
+		origin: /https?:\/\/localhost.*/,
 	});
 	app.useGlobalPipes(new ValidationPipe());
 	app.setGlobalPrefix(environment.api.globalPrefix);
 
-	const port = process.env.port || 3333;
+	const port = parseInt(process.env.port || '3333', 10);
 
 	setupSwagger(app);
 

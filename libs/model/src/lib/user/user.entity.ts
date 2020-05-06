@@ -17,6 +17,8 @@ export class User {
 	@Property()
 	public password!: string;
 
-	@ManyToMany(() => AuthorizationGroup, (authorizationGroup) => authorizationGroup.users)
+	@ManyToMany(() => AuthorizationGroup, (authorizationGroup) => authorizationGroup.users, {
+		owner: true,
+	})
 	public authorizationGroups?: AuthorizationGroup[];
 }

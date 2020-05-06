@@ -31,5 +31,5 @@ export async function bootstrap() {
  * Will only run when executed directly, not when imported as a module
  */
 if (require.main === module) {
-	bootstrap();
+	// bootstrap();
 }

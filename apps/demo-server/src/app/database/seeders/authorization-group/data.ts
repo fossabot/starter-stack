@@ -1,6 +1,7 @@
 import { AuthorizationGroup } from '@workspace/model';
 
 export const data: AuthorizationGroup[] = [
+	/*
 	{
 		id: 1,
 		name: 'admin',
@@ -19,4 +20,5 @@ export const data: AuthorizationGroup[] = [
 			},
 		],
 	},
+*/
 ];

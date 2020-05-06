@@ -17,5 +17,7 @@ import { UserSeederModule } from './user';
 	exports: [SeederService],
 })
 export class SeederModule {
-	public constructor() {}
+	public constructor() {
+		console.log('seeder module launched');
+	}
 }

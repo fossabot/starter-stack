@@ -1,6 +1,7 @@
-import { IUser } from '@workspace/model';
+import { User } from '@workspace/model';
 
-export const data: IUser[] = [
+export const data: User[] = [
+	/*
 	{
 		id: 1,
 		username: 'admin',
@@ -8,13 +9,14 @@ export const data: IUser[] = [
 		authorizationGroups: [
 			{
 				id: 1,
-				name: 'admin'
-			}
-		]
+				name: 'admin',
+			},
+		],
 	},
 	{
 		id: 2,
 		username: 'test',
-		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti' // secret
-	}
+		password: '$2b$10$AVv3mXZQgE1siZC8MAdhYeTGy8hbrkVjS3VZ25IU6rml.D9U5XOti', // secret
+	},
+*/
 ];

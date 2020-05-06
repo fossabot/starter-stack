@@ -1,4 +1,13 @@
-import { Cascade, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryKey, Property } from 'mikro-orm';
+import {
+	Cascade,
+	Collection,
+	Entity,
+	ManyToMany,
+	ManyToOne,
+	OneToMany,
+	PrimaryKey,
+	Property,
+} from 'mikro-orm';
 import { User } from '../user/user.entity';
 import { Authorization } from './authorization.entity';
 
@@ -15,15 +24,21 @@ export class AuthorizationGroup {
 	@Property({ nullable: false })
 	public name!: string;
 
-	@ManyToMany(() => User, (user) => user.authorizationGroups)
-	public users?: User[];
+	@ManyToMany(() => User, (user) => user.authorizationGroups, { mappedBy: 'authorizationGroups' })
+	public users = new Collection<User>(this);
 
-	@ManyToMany({ cascade: [Cascade.PERSIST, Cascade.MERGE] })
-	public authorizations?: Authorization[];
+	@ManyToMany(() => Authorization, 'authorizationGroups', {
+		owner: true,
+		cascade: [Cascade.PERSIST, Cascade.MERGE],
+	})
+	public authorizations = new Collection<Authorization>(this);
 
-	@OneToMany({ cascade: [Cascade.PERSIST, Cascade.MERGE] })
-	public authorizationGroups?: AuthorizationGroup[];
+	@OneToMany(() => AuthorizationGroup, (authorizationGroup) => authorizationGroup.parentGroup, {
+		mappedBy: 'parentGroup',
+		cascade: [Cascade.PERSIST, Cascade.MERGE],
+	})
+	public authorizationGroups = new Collection<this>(this);
 
-	@ManyToOne()
+	@ManyToOne(() => AuthorizationGroup)
 	public parentGroup?: AuthorizationGroup;
 }

@@ -19,7 +19,6 @@ export class DatabaseConfigService {
 					return m;
 				}),
 			],
-			entitiesDirsTs: ['src'],
 			debug: true,
 		};
 	}
