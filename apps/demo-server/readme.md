@@ -2,6 +2,10 @@
 
 NestJS Demo Api
 
+```sh
+npx ng serve demo-server
+```
+
 ## MikroORM
 
 ```shell

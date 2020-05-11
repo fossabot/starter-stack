@@ -17,6 +17,10 @@ file/document storage (profile images)
 
 ## Plans
 
+investigate yarn workspaces
+
+caching <https://github.com/actions/cache/blob/master/examples.md#node---yarn>
+
 - use: <https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-persisted/README.md>
 
 -check for auth: <https://github.com/apollographql/apollo-angular/blob/master/packages/apollo-angular-link-headers/README.md>

@@ -86,8 +86,8 @@
 					},
 					"background": {
 						"activeOnStart": true,
-						"beginsPattern": "^\\s*\\d{1,2}:\\d{1,2}:\\d{1,2}(?: AM| PM)? - File change detected\\. Starting incremental compilation\\.\\.\\.",
-						"endsPattern": "^.*Compiled successfully."
+						"beginsPattern": "^Using.*",
+						"endsPattern": "^Version: typescript.*"
 					}
 				}
 			]

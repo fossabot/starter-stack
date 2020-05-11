@@ -20,7 +20,7 @@
 		"strictFunctionTypes": true,
 		"strictPropertyInitialization": true,
 		"target": "es2020",
-		"module": "ES6",
+		"module": "commonjs",
 		"typeRoots": ["node_modules/@types"],
 		"lib": ["ES2020", "dom"],
 		"skipLibCheck": true,

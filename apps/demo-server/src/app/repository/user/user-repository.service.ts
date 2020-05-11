@@ -19,6 +19,7 @@ export class UserRepositoryService {
 
 	public async findUser(username: string, password: string): Promise<User> {
 		const userByUsername = await this.userRepository.findOne({ username });
+		console.log(username, password);
 		if (userByUsername) {
 			if (await this.bCryptService.compare(userByUsername.password, password)) {
 				return userByUsername;
@@ -31,10 +32,11 @@ export class UserRepositoryService {
 	 * @param user will be saved into the database, and it's password will be encrypted
 	 */
 	public async save(user: User): Promise<User> {
-		this.userRepository.persistAndFlush({
-			...user,
-			password: await this.bCryptService.encrypt(user.password),
-		});
+		console.log('SAVING USER', user);
+		const userModel = new User();
+		userModel.username = user.username;
+		userModel.password = await this.bCryptService.encrypt(user.password);
+		this.userRepository.persistAndFlush(userModel);
 		return user;
 	}
 }

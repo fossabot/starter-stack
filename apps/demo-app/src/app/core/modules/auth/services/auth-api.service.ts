@@ -5,15 +5,14 @@ import { environment } from '@env';
 import { of } from 'rxjs';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class AuthApiService {
 	public constructor(private http: HttpClient) {}
 
 	public login(request: LoginRequest) {
-		return this.http.get(`${environment.api}`);
-		console.log(request);
-		return of({ token: 'mock' });
+		console.log('aad', request);
+		return this.http.post<object>(`${environment.api}/auth/login`, request);
 	}
 
 	public logout() {

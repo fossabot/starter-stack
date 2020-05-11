@@ -5,7 +5,7 @@ export class AuthenticationError extends HttpException {
 		super(
 			{
 				error: 'Authenticaton required',
-				reasons
+				reasons,
 			},
 			HttpStatus.FORBIDDEN
 		);

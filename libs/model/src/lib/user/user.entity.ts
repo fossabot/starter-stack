@@ -1,4 +1,4 @@
-import { Entity, ManyToMany, PrimaryKey, Property } from 'mikro-orm';
+import { Collection, Entity, ManyToMany, PrimaryKey, Property } from 'mikro-orm';
 import { AuthorizationGroup } from '../authorization/authorization-group.entity';
 
 /**
@@ -20,5 +20,5 @@ export class User {
 	@ManyToMany(() => AuthorizationGroup, (authorizationGroup) => authorizationGroup.users, {
 		owner: true,
 	})
-	public authorizationGroups?: AuthorizationGroup[];
+	public authorizationGroups = new Collection<AuthorizationGroup>(this);
 }

@@ -3,23 +3,39 @@ import { Router } from '@angular/router';
 import { AuthApiService } from '@app/core/modules/auth/services/auth-api.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { from, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { AuthActions, login, loginFailure, loginSuccess, logout, logoutFailure, logoutSuccess } from '../actions';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import {
+	AuthActions,
+	login,
+	loginFailure,
+	loginSuccess,
+	logout,
+	logoutFailure,
+	logoutSuccess,
+} from '../actions';
 
 /**
  * Auth effects
  */
 @Injectable()
 export class AuthEffects {
-	public constructor(private actions$: Actions<AuthActions>, private auth: AuthApiService, private router: Router) {}
+	public constructor(
+		private actions$: Actions<AuthActions>,
+		private auth: AuthApiService,
+		private router: Router
+	) {}
 
 	@Effect()
 	public login$ = this.actions$.pipe(
 		ofType(login.type),
+		tap((a) => void console.log('a', a)),
 		switchMap(({ payload }) =>
 			this.auth.login(payload).pipe(
-				map(response => loginSuccess({ payload: response })),
-				catchError(error => of(loginFailure({ payload: error })))
+				map((response) => loginSuccess({ payload: response })),
+				catchError((error) => {
+					console.log(error);
+					return of(loginFailure({ payload: error.message }));
+				})
 			)
 		)
 	);
@@ -36,7 +52,9 @@ export class AuthEffects {
 		switchMap(() =>
 			this.auth.logout().pipe(
 				map(() => logoutSuccess()),
-				catchError(error => of(logoutFailure({ payload: error })))
+				catchError((error) => {
+					return of(logoutFailure({ payload: error }));
+				})
 			)
 		)
 	);

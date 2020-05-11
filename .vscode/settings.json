@@ -46,7 +46,7 @@
 	"files.exclude": {
 		"**/.git": true,
 		"**/.DS_Store": true,
-		"node_modules": true,
+		"node_modules": false,
 		"coverage": true
 	},
 	"files.associations": {

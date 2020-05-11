@@ -24,7 +24,8 @@
 			"implicitDependencies": ["model", "miscellaneous"]
 		},
 		"demo-app-e2e": {
-			"tags": []
+			"tags": [],
+			"implicitDependencies": ["demo-app"]
 		},
 		"demo-app": {
 			"tags": ["type:app"],
