@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthApiService } from '@app/core/modules/auth/services/auth-api.service';
+import { AuthApiService } from '@app/modules/auth/services/auth-api.service';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { from, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -14,9 +14,6 @@ import {
 	logoutSuccess,
 } from '../actions';
 
-/**
- * Auth effects
- */
 @Injectable()
 export class AuthEffects {
 	public constructor(
@@ -40,6 +37,9 @@ export class AuthEffects {
 		)
 	);
 
+	/**
+	 * TODO: Make the loginredirect configurable!
+	 */
 	@Effect({ dispatch: false })
 	public loginSuccessRedirect$ = this.actions$.pipe(
 		ofType(loginSuccess.type),
@@ -59,6 +59,9 @@ export class AuthEffects {
 		)
 	);
 
+	/**
+	 * TODO: Make the logoutredirect configurable!
+	 */
 	@Effect({ dispatch: false })
 	public logoutSuccessRedirect$ = this.actions$.pipe(
 		ofType(logoutSuccess.type),

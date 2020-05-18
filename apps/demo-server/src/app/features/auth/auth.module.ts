@@ -13,16 +13,15 @@ import { AuthService } from './services/auth.service';
 	controllers: [AuthController],
 	providers: [
 		AuthService,
-
 		{
 			provide: APP_GUARD,
-			useClass: AuthGuard
+			useClass: AuthGuard,
 		},
 		{
 			provide: APP_GUARD,
-			useClass: RoleGuard
-		}
-	]
+			useClass: RoleGuard,
+		},
+	],
 })
 export class AuthModule {
 	public constructor() {}

@@ -41,6 +41,11 @@ export interface Environment {
 	apiPrefix: string;
 
 	/**
+	 * The baseUrl and the optional port
+	 */
+	domain: string;
+
+	/**
 	 * The full api url assembled
 	 */
 	api: string;
@@ -56,7 +61,10 @@ export const initialEnvironment: Environment = {
 	baseUrl: 'localhost',
 	port: 3333,
 	apiPrefix: 'api',
+	get domain(): string {
+		return `${this.baseUrl}${this.port ? ':' + this.port : ''}`;
+	},
 	get api(): string {
-		return `${this.protocol}${this.baseUrl}${this.port ? ':' + this.port : ''}/${this.apiPrefix}`;
+		return `${this.protocol}${this.domain}${this.apiPrefix ? '/' + this.apiPrefix : ''}`;
 	},
 };

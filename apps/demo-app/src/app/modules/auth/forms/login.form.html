@@ -1,0 +1,7 @@
+<form [formGroup]="formGroup" (submit)="output.next(formGroup.value)">
+	<label>Username:</label>
+	<input [formControl]="formGroup.controls['username']" type="text" name="username" />
+	<label>Password:</label>
+	<input [formControl]="formGroup.controls['password']" type="text" name="password" />
+	<button type="submit">Login</button>
+</form>

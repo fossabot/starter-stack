@@ -19,7 +19,7 @@
 		"strictNullChecks": true,
 		"strictFunctionTypes": true,
 		"strictPropertyInitialization": true,
-		"target": "es2020",
+		"target": "es2018",
 		"module": "commonjs",
 		"typeRoots": ["node_modules/@types"],
 		"lib": ["ES2020", "dom"],

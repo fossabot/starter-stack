@@ -5,7 +5,7 @@ describe('AuthStoreFacade', () => {
 	beforeEach(() => TestBed.configureTestingModule({}));
 
 	it('should be created', () => {
-		const service: AuthStoreFacade = TestBed.get(AuthStoreFacade);
+		const service: AuthStoreFacade = TestBed.inject(AuthStoreFacade);
 		expect(service).toBeTruthy();
 	});
 });

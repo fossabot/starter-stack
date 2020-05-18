@@ -4,7 +4,9 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { AppState } from '.';
 import { AppActions } from '../actions';
 
-export function logger(reducer: ActionReducer<AppState, AppActions>): ActionReducer<AppState, AppActions> {
+export function logger(
+	reducer: ActionReducer<AppState, AppActions>
+): ActionReducer<AppState, AppActions> {
 	return (state: AppState | undefined, action: AppActions): AppState => {
 		const result = reducer(state, action);
 		console.groupCollapsed(action.type);
@@ -26,5 +28,5 @@ export function localStorageSyncReducer(
 
 export const metaReducers: MetaReducer<AppState, AppActions>[] = [
 	localStorageSyncReducer,
-	...(!environment.production ? [logger] : [])
+	...(!environment.production ? [logger] : []),
 ];

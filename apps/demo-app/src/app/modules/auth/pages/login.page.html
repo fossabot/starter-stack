@@ -1,0 +1,3 @@
+<h1>Login</h1>
+<div *ngIf="isLoading$ | async">Loading</div>
+<app-login-form (output)="login($event)"></app-login-form>

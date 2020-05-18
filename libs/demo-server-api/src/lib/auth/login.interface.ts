@@ -1,8 +1,15 @@
 import { User } from '@workspace/model';
 
-export interface LoginResult {
+export interface LoginRequest {
+	username: string;
+	password: string;
+}
+
+export interface LoginResponse {
 	tokens: TokenPair;
 }
+
+export type RefreshResponse = LoginResponse;
 
 export type Token = string;
 export type AccessToken = Token;

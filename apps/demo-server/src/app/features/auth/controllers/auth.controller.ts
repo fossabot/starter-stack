@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post } from '@nestjs/common';
-import { LoginResult } from '@workspace/demo-server-api';
+import { LoginResponse } from '@workspace/demo-server-api';
 import { User } from '@workspace/model';
 import { BCryptService } from '../features/bcrypt/services/crypt.service';
 import { PublicEndpoint } from '../guards';
@@ -15,7 +15,7 @@ export class AuthController {
 
 	@HttpCode(HttpStatus.ACCEPTED)
 	@Post('login')
-	public async login(@Body() user: Partial<User>): Promise<LoginResult> {
+	public async login(@Body() user: Partial<User>): Promise<LoginResponse> {
 		if (!user.username) {
 			throw new HttpException('No username provided', HttpStatus.BAD_REQUEST);
 		}

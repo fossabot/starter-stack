@@ -3,6 +3,16 @@
 	"editor.formatOnSave": true,
 	"editor.autoIndent": "full",
 	"editor.tabCompletion": "off",
+	"editor.rulers": [
+		{
+			"color": "#bdbdbd11",
+			"column": 80
+		},
+		{
+			"color": "#6d6d6d75",
+			"column": 100
+		}
+	],
 	"editor.quickSuggestionsDelay": 0,
 	"editor.quickSuggestions": {
 		"other": true,
