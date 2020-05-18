@@ -21,7 +21,7 @@
 	"projects": {
 		"demo-server": {
 			"tags": ["type:server"],
-			"implicitDependencies": ["model", "miscellaneous"]
+			"implicitDependencies": ["model", "miscellaneous", "demo-server-api"]
 		},
 		"demo-app-e2e": {
 			"tags": [],
@@ -29,13 +29,16 @@
 		},
 		"demo-app": {
 			"tags": ["type:app"],
-			"implicitDependencies": ["model", "miscellaneous"]
+			"implicitDependencies": ["model", "miscellaneous", "demo-server-api"]
 		},
 		"model": {
 			"tags": ["type:model"]
 		},
 		"miscellaneous": {
 			"tags": ["type:miscellaneous"]
+		},
+		"demo-server-api": {
+			"tags": []
 		}
 	}
 }

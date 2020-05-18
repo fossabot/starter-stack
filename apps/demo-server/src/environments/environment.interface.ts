@@ -24,9 +24,17 @@ export interface Environment {
 		secret: string;
 	};
 	authentication: {
-		signOptions: SignOptions;
+		accessTokenSignOptions: SignOptions;
+		refreshTokenSignOptions: SignOptions;
 	};
 }
+
+export const baseSignOptions: SignOptions = {
+	issuer: 'demo-api',
+	algorithm: 'HS512',
+	audience: 'demo-app',
+	subject: 'auth',
+};
 
 /**
  * Default environmental values, these are meant to be overridden.
@@ -36,22 +44,17 @@ export const initialEnvironment: Environment = {
 	artifact: {
 		name: `${pkg.name} API`,
 		version: pkg.version,
-		description: `${pkg.description} - For the API`
+		description: `${pkg.description} - For the API`,
 	},
 	api: {
-		globalPrefix: 'api'
+		globalPrefix: 'api',
 	},
 	encryption: {
 		saltRounds: 10,
-		secret: 'secret'
+		secret: 'secret',
 	},
 	authentication: {
-		signOptions: {
-			expiresIn: '6h',
-			issuer: 'demo-api',
-			algorithm: 'HS512',
-			audience: 'demo-app',
-			subject: 'auth'
-		}
-	}
+		accessTokenSignOptions: { ...baseSignOptions, expiresIn: '6s' }, // TODO: Change
+		refreshTokenSignOptions: { ...baseSignOptions, expiresIn: '1h' }, // TODO: Change
+	},
 };

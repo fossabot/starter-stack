@@ -7,7 +7,8 @@
 			"@app/*": ["apps/demo-server/src/app/*"],
 			"@env": ["apps/demo-server/src/environments"],
 			"@workspace/model": ["libs/model/src/index.ts"],
-			"@workspace/misc": ["libs/miscellaneous/src/index.ts"]
+			"@workspace/misc": ["libs/miscellaneous/src/index.ts"],
+			"@workspace/demo-server-api": ["libs/demo-server-api/src/index.ts"]
 		}
 	},
 	"include": ["**/*.ts"]

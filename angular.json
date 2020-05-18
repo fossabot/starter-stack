@@ -239,6 +239,34 @@
 					}
 				}
 			}
+		},
+		"demo-server-api": {
+			"root": "libs/demo-server-api",
+			"sourceRoot": "libs/demo-server-api/src",
+			"projectType": "library",
+			"schematics": {},
+			"architect": {
+				"lint": {
+					"builder": "@nrwl/linter:lint",
+					"options": {
+						"linter": "eslint",
+						"config": "libs/demo-server-api/.eslintrc",
+						"tsConfig": [
+							"libs/demo-server-api/tsconfig.lib.json",
+							"libs/demo-server-api/tsconfig.spec.json"
+						],
+						"exclude": ["**/node_modules/**", "!libs/demo-server-api/**"]
+					}
+				},
+				"test": {
+					"builder": "@nrwl/jest:jest",
+					"options": {
+						"jestConfig": "libs/demo-server-api/jest.config.js",
+						"tsConfig": "libs/demo-server-api/tsconfig.spec.json",
+						"passWithNoTests": true
+					}
+				}
+			}
 		}
 	},
 	"cli": {
@@ -257,6 +285,5 @@
 		"@nrwl/angular:library": {
 			"unitTestRunner": "jest"
 		}
-	},
-	"defaultProject": "starter-stack"
+	}
 }

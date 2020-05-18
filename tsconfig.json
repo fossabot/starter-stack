@@ -29,7 +29,8 @@
 		"paths": {
 			"@workspace/*": ["libs/*", "apps/*"],
 			"@workspace/model": ["libs/model/src/index.ts"],
-			"@workspace/misc": ["libs/miscellaneous/src/index.ts"]
+			"@workspace/misc": ["libs/miscellaneous/src/index.ts"],
+			"@workspace/demo-server-api": ["libs/demo-server-api/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
