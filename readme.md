@@ -1,4 +1,6 @@
 # StarterStack
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAlexAegis%2Fstarter-stack.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FAlexAegis%2Fstarter-stack?ref=badge_shield)
+
 
 ## Requirements
 
@@ -117,3 +119,7 @@ Run `npm run dep-graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAlexAegis%2Fstarter-stack.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FAlexAegis%2Fstarter-stack?ref=badge_large)
